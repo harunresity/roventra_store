@@ -41,7 +41,6 @@
         ul { list-style: none; }
         img { width: 100%; height: auto; display: block; object-fit: cover; }
 
-        /* PAGE VIEWS MANAGEMENT */
         .page-view {
             display: none;
             opacity: 0;
@@ -53,7 +52,6 @@
             opacity: 1;
         }
 
-        /* GLASS EFFECT HEADER */
         header {
             position: fixed;
             top: 0;
@@ -92,21 +90,19 @@
             cursor: pointer;
         }
 
-        .main-logo-img {
-            height: 52px;
-            width: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 0 12px rgba(212, 163, 115, 0.25));
-            transition: transform 0.3s ease;
-        }
-
-        .brand-logo-container:hover .main-logo-img {
-            transform: scale(1.04);
+        .main-logo-text {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-heading);
+            letter-spacing: 3px;
+            text-shadow: 0 0 12px var(--accent-glow);
         }
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 28px;
+            align-items: center;
         }
 
         .nav-item {
@@ -178,7 +174,6 @@
             box-shadow: 0 0 8px var(--accent-glow);
         }
 
-        /* HERO SECTION */
         .hero {
             padding-top: 150px;
             padding-bottom: 90px;
@@ -331,7 +326,6 @@
             font-size: 0.88rem;
         }
 
-        /* CATEGORIES BAR HOME */
         .categories-sec {
             padding: 60px 0;
             border-top: 1px solid var(--border-subtle);
@@ -384,7 +378,6 @@
             font-size: 1.4rem;
         }
 
-        /* CATALOG COMMON */
         .catalog-sec {
             padding: 100px 0;
         }
@@ -570,7 +563,6 @@
             font-weight: 600;
         }
 
-        /* SEARCH MODAL OVERLAY */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -687,7 +679,6 @@
             font-weight: 700;
         }
 
-        /* DRAWERS (CART & FAVORITES) */
         .drawer-overlay {
             position: fixed;
             top: 0;
@@ -848,6 +839,46 @@
             margin-bottom: 8px;
         }
 
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .qty-btn {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-heading);
+            width: 26px;
+            height: 26px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qty-btn:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .qty-val {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-heading);
+        }
+
+        .remove-item-btn {
+            background: none;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 4px;
+        }
+
         .drawer-footer {
             padding: 24px;
             border-top: 1px solid var(--border-subtle);
@@ -894,7 +925,6 @@
             transform: translateY(-2px);
         }
 
-        /* DETAILED CATEGORIES PAGE STYLES */
         .page-header-banner {
             padding-top: 150px;
             padding-bottom: 50px;
@@ -1025,7 +1055,6 @@
             font-size: 0.9rem;
         }
 
-        /* CHECKOUT PAGE STYLES — FULLY RESTORED & OPTIMIZED */
         .checkout-grid {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
@@ -1127,7 +1156,129 @@
             object-fit: cover;
         }
 
-        /* COLLECTION PAGE SPECIFIC STYLES */
+        .tracking-search-box {
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .tracking-result-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            display: none;
+        }
+
+        .tracking-status-bar {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin: 40px 0;
+        }
+
+        .tracking-progress-line {
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            width: 80%;
+            height: 4px;
+            background: var(--border-subtle);
+            z-index: 1;
+        }
+
+        .tracking-progress-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: var(--accent-primary);
+            transition: width 0.5s ease;
+        }
+
+        .status-step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid var(--border-subtle);
+            color: var(--text-body);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .status-step.completed .step-icon {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: #0b0f17;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .status-step.active .step-icon {
+            background: var(--bg-surface);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .step-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-body);
+        }
+
+        .status-step.active .step-label, .status-step.completed .step-label {
+            color: var(--text-heading);
+        }
+
+        .info-cards-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .info-mini-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .info-mini-card h5 {
+            font-size: 0.75rem;
+            color: var(--text-body);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .info-mini-card p {
+            font-size: 0.95rem;
+            color: var(--text-heading);
+            font-weight: 700;
+        }
+
         .filter-bar {
             display: flex;
             justify-content: space-between;
@@ -1177,7 +1328,64 @@
             cursor: pointer;
         }
 
-        /* FOOTER */
+        /* ADMIN PANEL STYLES */
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-surface);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            margin-top: 24px;
+        }
+
+        .admin-table th, .admin-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-subtle);
+            font-size: 0.9rem;
+        }
+
+        .admin-table th {
+            background: var(--bg-card);
+            color: var(--text-heading);
+            font-weight: 700;
+        }
+
+        .admin-table td img {
+            width: 50px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .admin-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .admin-stat-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .admin-stat-card h4 {
+            font-size: 0.85rem;
+            color: var(--text-body);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .admin-stat-card p {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-primary);
+        }
+
         footer {
             background: #070a10;
             border-top: 1px solid var(--border-subtle);
@@ -1196,13 +1404,6 @@
             margin-top: 16px;
             max-width: 320px;
             font-size: 0.9rem;
-        }
-
-        .footer-logo-img {
-            height: 48px;
-            width: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 0 8px rgba(212, 163, 115, 0.2));
         }
 
         .f-col h4 {
@@ -1241,6 +1442,7 @@
             .category-hero-grid { grid-template-columns: 1fr; }
             .checkout-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
+            .admin-stats-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 640px) {
@@ -1332,7 +1534,7 @@
     <header>
         <div class="nav-inner">
             <a onclick="showPage('home')" class="brand-logo-container">
-                <img src="logo.png" alt="ROVENTRA" class="main-logo-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=200'; this.alt='ROVENTRA Logo';">
+                <div class="main-logo-text">ROVENTRA</div>
             </a>
 
             <nav class="nav-links">
@@ -1341,6 +1543,7 @@
                 <span onclick="showPage('categories')" class="nav-item" id="nav-categories">Kategoriler</span>
                 <span onclick="showPage('tracking')" class="nav-item" id="nav-tracking">Sipariş Takibi</span>
                 <span onclick="showPage('checkout')" class="nav-item" id="nav-checkout">Ödeme Sayfası</span>
+                <span onclick="showPage('admin')" class="nav-item" id="nav-admin" style="color: var(--accent-primary); font-weight: 700;">⚙️ Admin</span>
             </nav>
 
             <div class="nav-actions">
@@ -1385,49 +1588,35 @@
             </div>
         </section>
 
-        <!-- HOME CATEGORIES OVERVIEW -->
         <section class="categories-sec">
             <div class="cat-grid">
                 <div class="cat-box" onclick="selectCategoryView('T-Shirt')">
-                    <div>
-                        <h4>T-Shirt</h4>
-                    </div>
+                    <div><h4>T-Shirt</h4></div>
                     <div class="cat-icon">👕</div>
                 </div>
                 <div class="cat-box" onclick="selectCategoryView('Atlet')">
-                    <div>
-                        <h4>Atlet</h4>
-                    </div>
+                    <div><h4>Atlet</h4></div>
                     <div class="cat-icon">🎽</div>
                 </div>
                 <div class="cat-box" onclick="selectCategoryView('Sweat')">
-                    <div>
-                        <h4>Sweat</h4>
-                    </div>
+                    <div><h4>Sweat</h4></div>
                     <div class="cat-icon">🧥</div>
                 </div>
                 <div class="cat-box" onclick="selectCategoryView('Gömlek')">
-                    <div>
-                        <h4>Gömlek</h4>
-                    </div>
+                    <div><h4>Gömlek</h4></div>
                     <div class="cat-icon">👔</div>
                 </div>
                 <div class="cat-box" onclick="selectCategoryView('Dış Giyim')">
-                    <div>
-                        <h4>Ceket & Mont</h4>
-                    </div>
+                    <div><h4>Ceket & Mont</h4></div>
                     <div class="cat-icon">⚡</div>
                 </div>
                 <div class="cat-box" onclick="selectCategoryView('Pantolon')">
-                    <div>
-                        <h4>Pantolon</h4>
-                    </div>
+                    <div><h4>Pantolon</h4></div>
                     <div class="cat-icon">👖</div>
                 </div>
             </div>
         </section>
 
-        <!-- HOME FEATURED CATALOG -->
         <section class="catalog-sec">
             <div class="container">
                 <div class="sec-header">
@@ -1518,7 +1707,6 @@
                 </div>
             </div>
 
-            <!-- Subcategories Horizontal Selector -->
             <div class="subcategories-bar">
                 <div class="subcat-pill active" onclick="filterCategoryPage('all', this)"><span>🔥</span> Tüm Kategori Ürünleri</div>
                 <div class="subcat-pill" onclick="filterCategoryPage('T-Shirt', this)"><span>👕</span> T-Shirt</div>
@@ -1530,7 +1718,6 @@
                 <div class="subcat-pill" onclick="filterCategoryPage('Aksesuar', this)"><span>🧢</span> Aksesuar</div>
             </div>
 
-            <!-- Active Selected Category Header -->
             <div class="category-detail-header" id="categoryDetailHeader">
                 <div>
                     <h2 id="catDetailTitle">Tüm Kategori Ürünleri</h2>
@@ -1539,7 +1726,6 @@
                 <button class="btn-secondary" onclick="filterCategoryPage('all', document.querySelector('.subcat-pill'))" style="padding: 8px 18px; font-size: 0.8rem;">Tümünü Göster</button>
             </div>
 
-            <!-- Products for Selected Category -->
             <div class="products-grid" id="categoryProductsGrid"></div>
         </section>
     </main>
@@ -1628,7 +1814,6 @@
                 </div>
             </div>
 
-            <!-- DYNAMIC ORDER TRACKING RESULT PANEL -->
             <div class="tracking-result-box" id="trackingResultPanel">
                 <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 20px;">
                     <div>
@@ -1641,44 +1826,20 @@
                     </div>
                 </div>
 
-                <!-- PROGRESS STATUS BAR -->
                 <div class="tracking-status-bar">
                     <div class="tracking-progress-line" id="progressLine" style="width: 66%;"></div>
-                    
-                    <div class="status-step completed" id="step1">
-                        <div class="step-icon">✔</div>
-                        <div class="step-label">Sipariş Alındı</div>
-                    </div>
-                    <div class="status-step completed" id="step2">
-                        <div class="step-icon">📦</div>
-                        <div class="step-label">Hazırlanıyor</div>
-                    </div>
-                    <div class="status-step active" id="step3">
-                        <div class="step-icon">🚚</div>
-                        <div class="step-label">Kargoda</div>
-                    </div>
-                    <div class="status-step" id="step4">
-                        <div class="step-icon">🏠</div>
-                        <div class="step-label">Teslim Edildi</div>
-                    </div>
+                    <div class="status-step completed" id="step1"><div class="step-icon">✔</div><div class="step-label">Sipariş Alındı</div></div>
+                    <div class="status-step completed" id="step2"><div class="step-icon">📦</div><div class="step-label">Hazırlanıyor</div></div>
+                    <div class="status-step active" id="step3"><div class="step-icon">🚚</div><div class="step-label">Kargoda</div></div>
+                    <div class="status-step" id="step4"><div class="step-icon">🏠</div><div class="step-label">Teslim Edildi</div></div>
                 </div>
 
                 <div class="info-cards-row">
-                    <div class="info-mini-card">
-                        <h5>Kargo Firması</h5>
-                        <p id="resCourier">Yurtiçi Kargo VIP</p>
-                    </div>
-                    <div class="info-mini-card">
-                        <h5>Kargo Takip No</h5>
-                        <p id="resCourierTrackNo">YK-9823401293</p>
-                    </div>
-                    <div class="info-mini-card">
-                        <h5>Teslimat Adresi</h5>
-                        <p id="resAddressSummary">Kadıköy / İstanbul</p>
-                    </div>
+                    <div class="info-mini-card"><h5>Kargo Firması</h5><p id="resCourier">Yurtiçi Kargo VIP</p></div>
+                    <div class="info-mini-card"><h5>Kargo Takip No</h5><p id="resCourierTrackNo">YK-9823401293</p></div>
+                    <div class="info-mini-card"><h5>Teslimat Adresi</h5><p id="resAddressSummary">Kadıköy / İstanbul</p></div>
                 </div>
 
-                <!-- ORDERED ITEMS PREVIEW -->
                 <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border-subtle);">
                     <h4 style="font-family: var(--font-display); color: var(--text-heading); font-size: 1.1rem; margin-bottom: 16px;">Sipariş Edilen Ürünler</h4>
                     <div id="trackingOrderedItems"></div>
@@ -1687,7 +1848,7 @@
         </section>
     </main>
 
-    <!-- PAGE 6: CHECKOUT PAGE — FULLY RESTORED STYLING -->
+    <!-- PAGE 6: CHECKOUT PAGE -->
     <main id="checkout-page" class="page-view">
         <section class="page-header-banner">
             <div class="container">
@@ -1699,55 +1860,26 @@
         <section class="container" style="padding-bottom: 80px;">
             <form id="checkoutForm" onsubmit="handleFormSubmit(event)">
                 <div class="checkout-grid">
-                    <!-- FORM COLUMN -->
                     <div style="display: flex; flex-direction: column; gap: 32px;">
-                        <!-- STEP 1: ADDRESS -->
                         <div class="checkout-box">
-                            <div class="checkout-step-title">
-                                <span>📍 1. Teslimat Adresi</span>
+                            <div class="checkout-step-title"><span>📍 1. Teslimat Adresi</span></div>
+                            <div class="form-row">
+                                <div class="form-group"><label>Ad *</label><input type="text" class="form-input" id="custName" placeholder="Ahmet" required></div>
+                                <div class="form-group"><label>Soyad *</label><input type="text" class="form-input" id="custSurname" placeholder="Yılmaz" required></div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group">
-                                    <label>Ad *</label>
-                                    <input type="text" class="form-input" id="custName" placeholder="Ahmet" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Soyad *</label>
-                                    <input type="text" class="form-input" id="custSurname" placeholder="Yılmaz" required>
-                                </div>
+                                <div class="form-group"><label>E-Posta *</label><input type="email" class="form-input" id="custEmail" placeholder="ahmet@example.com" required></div>
+                                <div class="form-group"><label>Telefon *</label><input type="tel" class="form-input" id="custPhone" placeholder="0555 555 55 55" required></div>
                             </div>
+                            <div class="form-group"><label>Adres Tarifi / Sokak / Bina *</label><input type="text" class="form-input" id="custAddress" placeholder="Örn: Atatürk Mah. Gül Sok. No:12 D:4" required></div>
                             <div class="form-row">
-                                <div class="form-group">
-                                    <label>E-Posta *</label>
-                                    <input type="email" class="form-input" id="custEmail" placeholder="ahmet@example.com" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Telefon *</label>
-                                    <input type="tel" class="form-input" id="custPhone" placeholder="0555 555 55 55" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Adres Tarifi / Sokak / Bina *</label>
-                                <input type="text" class="form-input" id="custAddress" placeholder="Örn: Atatürk Mah. Gül Sok. No:12 D:4" required>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>İl *</label>
-                                    <input type="text" class="form-input" id="custCity" placeholder="İstanbul" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>İlçe *</label>
-                                    <input type="text" class="form-input" id="custDistrict" placeholder="Kadıköy" required>
-                                </div>
+                                <div class="form-group"><label>İl *</label><input type="text" class="form-input" id="custCity" placeholder="İstanbul" required></div>
+                                <div class="form-group"><label>İlçe *</label><input type="text" class="form-input" id="custDistrict" placeholder="Kadıköy" required></div>
                             </div>
                         </div>
 
-                        <!-- STEP 2: CREDIT CARD ONLY -->
                         <div class="checkout-box">
-                            <div class="checkout-step-title">
-                                <span>💳 2. Ödeme Yöntemi</span>
-                            </div>
-
+                            <div class="checkout-step-title"><span>💳 2. Ödeme Yöntemi</span></div>
                             <div class="payment-methods">
                                 <div class="payment-option">
                                     <span>💳</span>
@@ -1757,62 +1889,79 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- CARD FORM WITH AUTOMATIC FORMATTING & VALIDATION -->
                             <div id="cardFormContainer">
-                                <div class="form-group">
-                                    <label>Kart Üzerindeki İsim *</label>
-                                    <input type="text" class="form-input" id="cardHolderName" placeholder="AHMET YILMAZ" required style="text-transform: uppercase;">
-                                </div>
-                                <div class="form-group">
-                                    <label>Kart Numarası *</label>
-                                    <input type="text" class="form-input" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" required oninput="formatCardNumber(this)">
-                                </div>
+                                <div class="form-group"><label>Kart Üzerindeki İsim *</label><input type="text" class="form-input" id="cardHolderName" placeholder="AHMET YILMAZ" required style="text-transform: uppercase;"></div>
+                                <div class="form-group"><label>Kart Numarası *</label><input type="text" class="form-input" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" required oninput="formatCardNumber(this)"></div>
                                 <div class="form-row">
-                                    <div class="form-group">
-                                        <label>Son Kullanma Tarihi (AA/YY) *</label>
-                                        <input type="text" class="form-input" id="cardExpiry" placeholder="AA/YY" maxlength="5" required oninput="formatCardExpiry(this)">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>CVV / CVC *</label>
-                                        <input type="text" class="form-input" id="cardCvc" placeholder="123" maxlength="3" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-                                    </div>
+                                    <div class="form-group"><label>Son Kullanma Tarihi (AA/YY) *</label><input type="text" class="form-input" id="cardExpiry" placeholder="AA/YY" maxlength="5" required oninput="formatCardExpiry(this)"></div>
+                                    <div class="form-group"><label>CVV / CVC *</label><input type="text" class="form-input" id="cardCvc" placeholder="123" maxlength="3" required oninput="this.value = this.value.replace(/[^0-9]/g, '')"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- ORDER SUMMARY COLUMN -->
                     <div class="checkout-box" style="position: sticky; top: 110px;">
-                        <div class="checkout-step-title">
-                            <span>🛒 Sipariş Özeti</span>
-                        </div>
-
+                        <div class="checkout-step-title"><span>🛒 Sipariş Özeti</span></div>
                         <div id="checkoutSummaryItems"></div>
-
                         <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-subtle);">
-                            <div class="cart-summary-row">
-                                <span>Ara Toplam:</span>
-                                <span id="checkoutSubtotal" style="color: var(--text-heading); font-weight: 700;">₺0,00</span>
-                            </div>
-                            <div class="cart-summary-row">
-                                <span>Kargo Tutarı:</span>
-                                <span style="color: #22c55e; font-weight: 700;">ÜCRETSİZ</span>
-                            </div>
-                            <div class="cart-summary-total">
-                                <span>Genel Toplam:</span>
-                                <span id="checkoutTotal" style="color: var(--accent-primary);">₺0,00</span>
-                            </div>
-
+                            <div class="cart-summary-row"><span>Ara Toplam:</span><span id="checkoutSubtotal" style="color: var(--text-heading); font-weight: 700;">₺0,00</span></div>
+                            <div class="cart-summary-row"><span>Kargo Tutarı:</span><span style="color: #22c55e; font-weight: 700;">ÜCRETSİZ</span></div>
+                            <div class="cart-summary-total"><span>Genel Toplam:</span><span id="checkoutTotal" style="color: var(--accent-primary);">₺0,00</span></div>
                             <button type="submit" class="checkout-btn" id="paySubmitBtn">Siparişi Onayla & Öde 🔒</button>
-                            
-                            <div style="text-align: center; margin-top: 16px; font-size: 0.78rem; color: var(--text-body);">
-                                🔒 256-Bit SSL Şifreleme ile Güvenli Ödeme
-                            </div>
+                            <div style="text-align: center; margin-top: 16px; font-size: 0.78rem; color: var(--text-body);">🔒 256-Bit SSL Şifreleme ile Güvenli Ödeme</div>
                         </div>
                     </div>
                 </div>
             </form>
+        </section>
+    </main>
+
+    <!-- PAGE 7: ADMIN DASHBOARD PAGE -->
+    <main id="admin-page" class="page-view">
+        <section class="page-header-banner">
+            <div class="container">
+                <h1>YÖNETİCİ PANELİ</h1>
+                <p>Mağaza istatistikleri, ürün yönetimi ve sipariş kontrolü</p>
+            </div>
+        </section>
+
+        <section class="container" style="padding-top: 40px; padding-bottom: 80px;">
+            <div class="admin-stats-grid">
+                <div class="admin-stat-card">
+                    <h4>Toplam Ürün Çeşidi</h4>
+                    <p id="adminTotalProducts">0</p>
+                </div>
+                <div class="admin-stat-card">
+                    <h4>Aktif Siparişler</h4>
+                    <p id="adminTotalOrders">0</p>
+                </div>
+                <div class="admin-stat-card">
+                    <h4>Toplam Ciro</h4>
+                    <p id="adminTotalRevenue">₺0,00</p>
+                </div>
+            </div>
+
+            <div class="category-detail-header" style="margin-top: 40px;">
+                <div>
+                    <h2>Mağaza Ürün Envanteri</h2>
+                    <p>Sistemde kayıtlı aktif erkek giyim ürünleri</p>
+                </div>
+                <button class="btn-main" onclick="addNewProductPrompt()" style="padding: 10px 20px; font-size: 0.82rem;">+ Yeni Ürün Ekle</button>
+            </div>
+
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Görsel</th>
+                        <th>Ürün Adı</th>
+                        <th>Kategori</th>
+                        <th>Fiyat</th>
+                        <th>Puan</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody id="adminProductsTableBody"></tbody>
+            </table>
         </section>
     </main>
 
@@ -1821,9 +1970,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="f-about">
-                    <div style="margin-bottom: 16px;">
-                        <img src="logo.png" alt="ROVENTRA" class="footer-logo-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=200'; this.alt='ROVENTRA Logo';">
-                    </div>
+                    <div class="main-logo-text" style="margin-bottom: 16px;">ROVENTRA</div>
                     <p>Roventra Menswear — Erkek sokak modası ve modern giyim estetiğini buluşturan dinamik erkek giyim markası.</p>
                 </div>
                 <div class="f-col">
@@ -1863,9 +2010,8 @@
         </div>
     </footer>
 
-    <!-- INTERACTIVE JAVASCRIPT -->
+    <!-- JAVASCRIPT -->
     <script>
-        // MASTER MENSWEAR PRODUCTS DATABASE
         const allProducts = [
             { id: 1, title: 'Roventra Acid Wash Oversize Tee', category: 'T-Shirt', price: 890, rating: '4.9 (124)', img: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=800', badge: 'Çok Satan' },
             { id: 2, title: 'Roventra Cyberpunk Cargo Ceket', category: 'Dış Giyim', price: 2450, rating: '5.0 (86)', img: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800', badge: 'Yeni' },
@@ -1891,12 +2037,11 @@
             'all': { title: 'Tüm Kategori Ürünleri', desc: 'Tüm kategorilerdeki özel erkek giyim tasarımları listeleniyor.' }
         };
 
-        // MOCK ORDERS DATABASE FOR TRACKING
         let mockOrders = {
             'ROV-100200': {
                 code: 'ROV-100200',
                 email: 'ahmet@example.com',
-                statusStep: 3, // Kargoda
+                statusStep: 3,
                 deliveryDate: '28 Temmuz 2026',
                 courier: 'Yurtiçi Kargo VIP',
                 trackNo: 'YK-9823401293',
@@ -1912,7 +2057,6 @@
         let categoryPageProducts = [...allProducts];
         let searchPageProducts = [...allProducts];
 
-        // INITIAL STATES
         let cartItems = [
             { title: 'Roventra Acid Wash Oversize Tee', price: 890, img: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=800', qty: 1 },
             { title: 'Roventra Cyberpunk Cargo Ceket', price: 2450, img: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800', qty: 1 }
@@ -1920,7 +2064,6 @@
 
         let favoriteIds = [1, 5];
 
-        // PAGE NAVIGATION SWITCHER
         function showPage(pageName) {
             document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
@@ -1940,6 +2083,10 @@
                 document.getElementById('checkout-page').classList.add('active');
                 document.getElementById('nav-checkout').classList.add('active');
                 renderCheckoutUI();
+            } else if (pageName === 'admin') {
+                document.getElementById('admin-page').classList.add('active');
+                document.getElementById('nav-admin').classList.add('active');
+                renderAdminUI();
             } else {
                 document.getElementById('home-page').classList.add('active');
                 document.getElementById('nav-home').classList.add('active');
@@ -1952,7 +2099,65 @@
             showPage('checkout');
         }
 
-        // ORDER TRACKING LOGIC
+        function renderAdminUI() {
+            document.getElementById('adminTotalProducts').innerText = allProducts.length;
+            document.getElementById('adminTotalOrders').innerText = Object.keys(mockOrders).length;
+            document.getElementById('adminTotalRevenue').innerText = '₺22.450,00';
+
+            const tbody = document.getElementById('adminProductsTableBody');
+            let html = '';
+            allProducts.forEach(p => {
+                html += `
+                    <tr>
+                        <td><img src="${p.img}" alt="${p.title}"></td>
+                        <td style="color: var(--text-heading); font-weight: 600;">${p.title}</td>
+                        <td><span style="color: var(--accent-primary); font-weight: 600;">${p.category}</span></td>
+                        <td>₺${p.price.toLocaleString('tr-TR')},00</td>
+                        <td>★ ${p.rating}</td>
+                        <td>
+                            <button class="clear-all-btn" onclick="deleteProduct(${p.id})">Sil</button>
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+
+        function addNewProductPrompt() {
+            const title = prompt("Yeni Ürün Adı:");
+            if (!title) return;
+            const category = prompt("Kategori (T-Shirt, Atlet, Sweat, Gömlek, Dış Giyim, Pantolon, Aksesuar):");
+            const price = parseFloat(prompt("Fiyat (TL):", "1000"));
+            const img = prompt("Ürün Görseli URL adresi:", "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=800");
+
+            if (title && category && !isNaN(price)) {
+                const newId = allProducts.length > 0 ? Math.max(...allProducts.map(p => p.id)) + 1 : 1;
+                allProducts.push({
+                    id: newId,
+                    title: title,
+                    category: category,
+                    price: price,
+                    rating: '5.0 (1)',
+                    img: img || 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=800',
+                    badge: 'Yeni'
+                });
+                renderAdminUI();
+                renderGrids();
+                alert('Ürün başarıyla eklendi!');
+            }
+        }
+
+        function deleteProduct(id) {
+            if (confirm('Bu ürünü silmek istediğinize emin misiniz?')) {
+                const index = allProducts.findIndex(p => p.id === id);
+                if (index > -1) {
+                    allProducts.splice(index, 1);
+                    renderAdminUI();
+                    renderGrids();
+                }
+            }
+        }
+
         function autoFillTracking(code, email) {
             document.getElementById('trackOrderNum').value = code;
             document.getElementById('trackOrderEmail').value = email;
@@ -1970,7 +2175,7 @@
                 order = {
                     code: code,
                     email: email,
-                    statusStep: 2, // Hazırlanıyor
+                    statusStep: 2,
                     deliveryDate: '29 Temmuz 2026',
                     courier: 'MNG Kargo Express',
                     trackNo: 'MNG-' + Math.floor(10000000 + Math.random() * 90000000),
@@ -1996,11 +2201,8 @@
             for (let i = 1; i <= 4; i++) {
                 const stepEl = document.getElementById('step' + i);
                 stepEl.className = 'status-step';
-                if (i < order.statusStep) {
-                    stepEl.classList.add('completed');
-                } else if (i === order.statusStep) {
-                    stepEl.classList.add('active');
-                }
+                if (i < order.statusStep) stepEl.classList.add('completed');
+                else if (i === order.statusStep) stepEl.classList.add('active');
             }
 
             let itemsHtml = '';
@@ -2017,14 +2219,10 @@
                 `;
             });
             document.getElementById('trackingOrderedItems').innerHTML = itemsHtml;
-
             resultPanel.style.display = 'block';
-            setTimeout(() => {
-                resultPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
+            setTimeout(() => { resultPanel.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
         }
 
-        // CARD INPUT FORMATTERS
         function formatCardNumber(input) {
             let value = input.value.replace(/\D/g, '');
             let formatted = '';
@@ -2044,15 +2242,11 @@
             }
         }
 
-        // TOGGLE & CLEAR FAVORITES
         function toggleFavorite(id, event) {
             if (event) event.stopPropagation();
             const idx = favoriteIds.indexOf(id);
-            if (idx > -1) {
-                favoriteIds.splice(idx, 1);
-            } else {
-                favoriteIds.push(id);
-            }
+            if (idx > -1) favoriteIds.splice(idx, 1);
+            else favoriteIds.push(id);
             updateFavUI();
             renderGrids();
         }
@@ -2077,12 +2271,7 @@
 
             if (favoriteIds.length === 0) {
                 if (clearBtn) clearBtn.style.display = 'none';
-                container.innerHTML = `
-                    <div class="empty-msg">
-                        <span>🖤</span>
-                        <p>Favorilerinizde henüz ürün bulunmuyor.</p>
-                    </div>
-                `;
+                container.innerHTML = `<div class="empty-msg"><span>🖤</span><p>Favorilerinizde henüz ürün bulunmuyor.</p></div>`;
                 return;
             }
 
@@ -2105,7 +2294,6 @@
                     `;
                 }
             });
-
             container.innerHTML = html;
         }
 
@@ -2124,10 +2312,7 @@
         }
 
         function addAllFavsToCart() {
-            if (favoriteIds.length === 0) {
-                alert('Favorileriniz boş.');
-                return;
-            }
+            if (favoriteIds.length === 0) { alert('Favorileriniz boş.'); return; }
             favoriteIds.forEach(id => {
                 const p = allProducts.find(item => item.id === id);
                 if (p) {
@@ -2141,19 +2326,15 @@
             toggleCart(true);
         }
 
-        // CLEAR CART FUNCTION
         function clearAllCart() {
             if (cartItems.length === 0) return;
             if (confirm('Sepetinizdeki tüm ürünleri kaldırmak istediğinize emin misiniz?')) {
                 cartItems = [];
                 updateCartUI();
-                if (document.getElementById('checkout-page').classList.contains('active')) {
-                    renderCheckoutUI();
-                }
+                if (document.getElementById('checkout-page').classList.contains('active')) renderCheckoutUI();
             }
         }
 
-        // DEDICATED NAME-BASED SEARCH REDIRECT FUNCTIONALITY
         function toggleSearch(open = true) {
             const modal = document.getElementById('searchModal');
             const input = document.getElementById('searchInput');
@@ -2171,20 +2352,14 @@
 
         function checkSearchEnter(e) {
             if (e.key === 'Enter') {
-                const query = document.getElementById('searchInput').value.trim();
-                executeNameSearchRedirect(query);
+                executeNameSearchRedirect(document.getElementById('searchInput').value.trim());
             }
         }
 
         function executeNameSearchRedirect(query) {
             toggleSearch(false);
             const q = query.trim().toLowerCase();
-
-            if (!q) {
-                searchPageProducts = [...allProducts];
-            } else {
-                searchPageProducts = allProducts.filter(p => p.title.toLowerCase().includes(q));
-            }
+            searchPageProducts = !q ? [...allProducts] : allProducts.filter(p => p.title.toLowerCase().includes(q));
 
             document.getElementById('searchPageHeaderQuery').innerHTML = `<strong>"${query || 'Tüm Ürünler'}"</strong> kelimesine uygun ürün önerileri.`;
             document.getElementById('searchPageTitle').innerText = `Arama Sonuçları: "${query || 'Tümü'}"`;
@@ -2197,28 +2372,15 @@
         function handleSearch(query) {
             const container = document.getElementById('searchResultsContainer');
             const q = query.trim().toLowerCase();
-
             if (!q) {
-                container.innerHTML = `
-                    <div style="text-align: center; color: var(--text-body); padding: 40px 0;">
-                        Aramak istediğiniz ürünün adını yazınız.
-                    </div>
-                `;
+                container.innerHTML = `<div style="text-align: center; color: var(--text-body); padding: 40px 0;">Aramak istediğiniz ürünün adını yazınız.</div>`;
                 return;
             }
-
             const results = allProducts.filter(p => p.title.toLowerCase().includes(q));
-
             if (results.length === 0) {
-                container.innerHTML = `
-                    <div style="text-align: center; color: var(--text-body); padding: 40px 0;">
-                        "<strong>${query}</strong>" isminde ürün bulunamadı. <br>
-                        <span style="font-size: 0.85rem; margin-top: 8px; display: inline-block;">Enter'a basarak özel arama sayfasına gidebilirsiniz.</span>
-                    </div>
-                `;
+                container.innerHTML = `<div style="text-align: center; color: var(--text-body); padding: 40px 0;">"<strong>${query}</strong>" isminde ürün bulunamadı.</div>`;
                 return;
             }
-
             let html = '<div class="products-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px;">';
             results.forEach(p => {
                 const isFav = favoriteIds.includes(p.id);
@@ -2227,9 +2389,7 @@
                         <button class="fav-card-btn ${isFav ? 'active' : ''}" onclick="toggleFavorite(${p.id}, event)">${isFav ? '❤️' : '🖤'}</button>
                         <div class="img-container" style="height: 220px;">
                             <img src="${p.img}" alt="${p.title}">
-                            <div class="add-cart-overlay">
-                                <button class="btn-add-cart" onclick="addToCart('${p.title.replace(/'/g, "\'")}', ${p.price}, '${p.img}')">Sepete Ekle</button>
-                            </div>
+                            <div class="add-cart-overlay"><button class="btn-add-cart" onclick="addToCart('${p.title.replace(/'/g, "\'")}', ${p.price}, '${p.img}')">Sepete Ekle</button></div>
                         </div>
                         <div class="product-details" style="padding: 12px;">
                             <div class="p-category" style="font-size: 0.7rem;">${p.category}</div>
@@ -2240,24 +2400,18 @@
                 `;
             });
             html += '</div>';
-
             container.innerHTML = html;
         }
 
-        // CREATE PRODUCT CARD HTML
         function createProductCardHTML(p) {
             const isFav = favoriteIds.includes(p.id);
             return `
                 <div class="product-card">
                     ${p.badge ? `<span class="badge-hot">${p.badge}</span>` : ''}
-                    <button class="fav-card-btn ${isFav ? 'active' : ''}" title="Favorilere Ekle/Çıkar" onclick="toggleFavorite(${p.id}, event)">
-                        ${isFav ? '❤️' : '🖤'}
-                    </button>
+                    <button class="fav-card-btn ${isFav ? 'active' : ''}" title="Favorilere Ekle/Çıkar" onclick="toggleFavorite(${p.id}, event)">${isFav ? '❤️' : '🖤'}</button>
                     <div class="img-container">
                         <img src="${p.img}" alt="${p.title}">
-                        <div class="add-cart-overlay">
-                            <button class="btn-add-cart" onclick="addToCart('${p.title.replace(/'/g, "\'")}', ${p.price}, '${p.img}')">Sepete Ekle</button>
-                        </div>
+                        <div class="add-cart-overlay"><button class="btn-add-cart" onclick="addToCart('${p.title.replace(/'/g, "\'")}', ${p.price}, '${p.img}')">Sepete Ekle</button></div>
                     </div>
                     <div class="product-details">
                         <div class="p-category">${p.category}</div>
@@ -2272,41 +2426,22 @@
         }
 
         function renderGrids() {
-            // Home page grid
             document.getElementById('homeProductsGrid').innerHTML = allProducts.slice(0, 4).map(createProductCardHTML).join('');
-            
-            // Collection grid
             document.getElementById('fullProductsGrid').innerHTML = currentDisplayProducts.map(createProductCardHTML).join('');
-            
-            // Categories Page grid
             document.getElementById('categoryProductsGrid').innerHTML = categoryPageProducts.map(createProductCardHTML).join('');
-
-            // Dedicated Search Results Page grid
             const searchGrid = document.getElementById('dedicatedSearchProductsGrid');
             if (searchGrid) {
-                if (searchPageProducts.length === 0) {
-                    searchGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--text-body); padding: 60px 0; font-size: 1.1rem;">Aradığınız isimde ürün bulunamadı.</div>';
-                } else {
-                    searchGrid.innerHTML = searchPageProducts.map(createProductCardHTML).join('');
-                }
+                searchGrid.innerHTML = searchPageProducts.length === 0 ? '<div style="grid-column: 1/-1; text-align: center; color: var(--text-body); padding: 60px 0; font-size: 1.1rem;">Aradığınız isimde ürün bulunamadı.</div>' : searchPageProducts.map(createProductCardHTML).join('');
             }
         }
 
-        // CATEGORY PAGE SPECIFIC FILTERS & NAVIGATION
         function filterCategoryPage(cat, pill) {
             document.querySelectorAll('.subcat-pill').forEach(p => p.classList.remove('active'));
             if (pill) pill.classList.add('active');
-
-            if (cat === 'all') {
-                categoryPageProducts = [...allProducts];
-            } else {
-                categoryPageProducts = allProducts.filter(p => p.category === cat);
-            }
-
+            categoryPageProducts = cat === 'all' ? [...allProducts] : allProducts.filter(p => p.category === cat);
             const meta = categoryMeta[cat] || categoryMeta['all'];
             document.getElementById('catDetailTitle').innerText = meta.title;
             document.getElementById('catDetailDesc').innerText = meta.desc;
-
             renderGrids();
         }
 
@@ -2314,56 +2449,38 @@
             showPage('categories');
             const targetPill = Array.from(document.querySelectorAll('.subcat-pill')).find(el => el.innerText.includes(cat));
             filterCategoryPage(cat, targetPill);
-
-            setTimeout(() => {
-                document.getElementById('categoryDetailHeader').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
+            setTimeout(() => { document.getElementById('categoryDetailHeader').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
         }
 
-        // COLLECTION PAGE FILTERS & SORT
         function filterProducts(cat, btn) {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             if (btn) btn.classList.add('active');
-
-            if (cat === 'all') {
-                currentDisplayProducts = [...allProducts];
-            } else {
-                currentDisplayProducts = allProducts.filter(p => p.category === cat);
-            }
+            currentDisplayProducts = cat === 'all' ? [...allProducts] : allProducts.filter(p => p.category === cat);
             renderGrids();
         }
 
         function sortProducts(type) {
-            if (type === 'price-low') {
-                currentDisplayProducts.sort((a, b) => a.price - b.price);
-            } else if (type === 'price-high') {
-                currentDisplayProducts.sort((a, b) => b.price - a.price);
-            } else {
-                currentDisplayProducts = [...allProducts];
-            }
+            if (type === 'price-low') currentDisplayProducts.sort((a, b) => a.price - b.price);
+            else if (type === 'price-high') currentDisplayProducts.sort((a, b) => b.price - a.price);
+            else currentDisplayProducts = [...allProducts];
             renderGrids();
         }
 
-        // CHECKOUT PAGE UI RENDER & FULL PAYMENT VALIDATION
         function renderCheckoutUI() {
             const container = document.getElementById('checkoutSummaryItems');
             const subtotalEl = document.getElementById('checkoutSubtotal');
             const totalEl = document.getElementById('checkoutTotal');
-
             if (cartItems.length === 0) {
                 container.innerHTML = '<p style="color: var(--text-body); text-align: center; padding: 20px;">Sepetinizde ürün bulunmamaktadır.</p>';
                 subtotalEl.innerText = '₺0,00';
                 totalEl.innerText = '₺0,00';
                 return;
             }
-
             let html = '';
             let subtotal = 0;
-
             cartItems.forEach(item => {
                 const itemTotal = item.price * item.qty;
                 subtotal += itemTotal;
-
                 html += `
                     <div class="checkout-summary-item">
                         <img src="${item.img}" alt="${item.title}">
@@ -2375,7 +2492,6 @@
                     </div>
                 `;
             });
-
             container.innerHTML = html;
             subtotalEl.innerText = `₺${subtotal.toLocaleString('tr-TR')},00`;
             totalEl.innerText = `₺${subtotal.toLocaleString('tr-TR')},00`;
@@ -2383,24 +2499,17 @@
 
         function handleFormSubmit(e) {
             e.preventDefault();
-
-            if (cartItems.length === 0) {
-                alert('Sepetiniz boş olduğu için ödeme gerçekleştirilemiyor.');
-                return;
-            }
-
+            if (cartItems.length === 0) { alert('Sepetiniz boş.'); return; }
             const name = document.getElementById('custName').value.trim();
             const surname = document.getElementById('custSurname').value.trim();
             const email = document.getElementById('custEmail').value.trim();
             const address = document.getElementById('custDistrict').value.trim() + ' / ' + document.getElementById('custCity').value.trim();
             const btn = document.getElementById('paySubmitBtn');
-
             btn.innerHTML = 'Ödeme İşleniyor... ⏳';
             btn.disabled = true;
 
             setTimeout(() => {
                 const orderNum = 'ROV-' + Math.floor(100000 + Math.random() * 900000);
-                
                 mockOrders[orderNum] = {
                     code: orderNum,
                     email: email,
@@ -2411,47 +2520,28 @@
                     address: address,
                     items: [...cartItems]
                 };
-
-                alert(`🎉 ÖDEME BAŞARILI!
-
-Sayın ${name} ${surname},
-Sipariş Numaranız: ${orderNum}
-
-Siparişinizi "Sipariş Takibi" sayfasından sorgulayabilirsiniz!`);
-                
+                alert(`🎉 ÖDEME BAŞARILI!\nSipariş Numaranız: ${orderNum}`);
                 cartItems = [];
                 updateCartUI();
                 btn.innerHTML = 'Siparişi Onayla & Öde 🔒';
                 btn.disabled = false;
                 document.getElementById('checkoutForm').reset();
-                
                 showPage('tracking');
                 autoFillTracking(orderNum, email);
             }, 1200);
         }
 
-        // CART LOGIC
         function toggleCart(open = true) {
             const drawer = document.getElementById('cartDrawer');
             const overlay = document.getElementById('cartOverlay');
-            if (open) {
-                drawer.classList.add('active');
-                overlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            } else {
-                drawer.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
+            if (open) { drawer.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+            else { drawer.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = 'auto'; }
         }
 
         function addToCart(title, price, img) {
             const existingIndex = cartItems.findIndex(item => item.title === title);
-            if (existingIndex > -1) {
-                cartItems[existingIndex].qty += 1;
-            } else {
-                cartItems.push({ title, price, img, qty: 1 });
-            }
+            if (existingIndex > -1) cartItems[existingIndex].qty += 1;
+            else cartItems.push({ title, price, img, qty: 1 });
             updateCartUI();
             toggleCart(true);
         }
@@ -2460,17 +2550,13 @@ Siparişinizi "Sipariş Takibi" sayfasından sorgulayabilirsiniz!`);
             cartItems[index].qty += delta;
             if (cartItems[index].qty <= 0) cartItems.splice(index, 1);
             updateCartUI();
-            if (document.getElementById('checkout-page').classList.contains('active')) {
-                renderCheckoutUI();
-            }
+            if (document.getElementById('checkout-page').classList.contains('active')) renderCheckoutUI();
         }
 
         function removeItem(index) {
             cartItems.splice(index, 1);
             updateCartUI();
-            if (document.getElementById('checkout-page').classList.contains('active')) {
-                renderCheckoutUI();
-            }
+            if (document.getElementById('checkout-page').classList.contains('active')) renderCheckoutUI();
         }
 
         function updateCartUI() {
@@ -2487,23 +2573,16 @@ Siparişinizi "Sipariş Takibi" sayfasından sorgulayabilirsiniz!`);
 
             if (cartItems.length === 0) {
                 if (clearBtn) clearBtn.style.display = 'none';
-                container.innerHTML = `
-                    <div class="empty-msg">
-                        <span>🛍️</span>
-                        <p>Sepetiniz henüz boş.</p>
-                    </div>
-                `;
+                container.innerHTML = `<div class="empty-msg"><span>🛍️</span><p>Sepetiniz henüz boş.</p></div>`;
                 subtotalEl.innerText = '₺0,00';
                 totalEl.innerText = '₺0,00';
                 return;
             }
 
             if (clearBtn) clearBtn.style.display = 'inline-flex';
-
             let html = '';
             let subtotal = 0;
-
-            cartItems.forEach((item, idx) => {
+            cartItems.options = cartItems.forEach((item, idx) => {
                 const itemTotal = item.price * item.qty;
                 subtotal += itemTotal;
                 html += `
@@ -2522,13 +2601,11 @@ Siparişinizi "Sipariş Takibi" sayfasından sorgulayabilirsiniz!`);
                     </div>
                 `;
             });
-
             container.innerHTML = html;
             subtotalEl.innerText = `₺${subtotal.toLocaleString('tr-TR')},00`;
             totalEl.innerText = `₺${subtotal.toLocaleString('tr-TR')},00`;
         }
 
-        // INITIALIZE
         document.addEventListener('DOMContentLoaded', () => {
             renderGrids();
             updateCartUI();
