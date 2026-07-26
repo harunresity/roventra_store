@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: roventra-store
+    env: node
+    buildCommand: npm install
+    startCommand: node app.js
+    plan: free
