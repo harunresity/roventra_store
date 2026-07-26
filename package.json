@@ -1,9 +1,12 @@
 {
+  "name": "roventra",
+  "version": "1.0.0",
+  "description": "Roventra E-Commerce App",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
-    "bcryptjs": "^3.0.3",
-    "express": "^5.2.1",
-    "express-session": "^1.19.0",
-    "socket.io": "^4.8.3",
-    "sqlite3": "^6.0.1"
+    "express": "^4.19.2"
   }
 }
