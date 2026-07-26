@@ -2029,7 +2029,7 @@
         const categoryMeta = {
             'T-Shirt': { title: 'T-Shirt', desc: 'Ağır gramajlı pamuklu sokak modası t-shirt modelleri.' },
             'Atlet': { title: 'Atlet', desc: 'Sıcak havalar ve katmanlı giyim için özel kesim erkek atlet modelleri.' },
-            'Sweat': { title: 'Sweat', desc: 'Heavyweight kumaşlı, kapüşonlu ve sıfır yaka sweatshirt tasarımları.' },
+            'Sweat': { title: 'Sweat', desc: 'Heavyweight kumaşlı, kapüşonlu ve şardonlu sweatshirt tasarımları.' },
             'Gömlek': { title: 'Gömlek', desc: 'Modern kesim keten, oduncu ve ceket-gömlek (shaket) modelleri.' },
             'Dış Giyim': { title: 'Ceket & Mont', desc: 'Sokak stiline uygun maskülen ceket, mont ve bomber dış giyim koleksiyonu.' },
             'Pantolon': { title: 'Pantolon', desc: 'Tactical cepli kargo, denim ve rahat kesim erkek pantolon tasarımları.' },
@@ -2128,23 +2128,37 @@
             if (!title) return;
             const category = prompt("Kategori (T-Shirt, Atlet, Sweat, Gömlek, Dış Giyim, Pantolon, Aksesuar):");
             const price = parseFloat(prompt("Fiyat (TL):", "1000"));
-            const img = prompt("Ürün Görseli URL adresi:", "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=800");
-
-            if (title && category && !isNaN(price)) {
-                const newId = allProducts.length > 0 ? Math.max(...allProducts.map(p => p.id)) + 1 : 1;
-                allProducts.push({
-                    id: newId,
-                    title: title,
-                    category: category,
-                    price: price,
-                    rating: '5.0 (1)',
-                    img: img || 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=800',
-                    badge: 'Yeni'
-                });
-                renderAdminUI();
-                renderGrids();
-                alert('Ürün başarıyla eklendi!');
-            }
+            
+            // File input dynamically created for local file selection
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = e => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const imgBase64 = event.target.result;
+                        if (title && category && !isNaN(price)) {
+                            const newId = allProducts.length > 0 ? Math.max(...allProducts.map(p => p.id)) + 1 : 1;
+                            allProducts.push({
+                                id: newId,
+                                title: title,
+                                category: category,
+                                price: price,
+                                rating: '5.0 (1)',
+                                img: imgBase64,
+                                badge: 'Yeni'
+                            });
+                            renderAdminUI();
+                            renderGrids();
+                            alert('Ürün ve bilgisayarınızdan seçilen görsel başarıyla eklendi!');
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            input.click();
         }
 
         function deleteProduct(id) {
@@ -2312,7 +2326,10 @@
         }
 
         function addAllFavsToCart() {
-            if (favoriteIds.length === 0) { alert('Favorileriniz boş.'); return; }
+            if (favoriteIds.length === 0) {
+                alert('Favorileriniz boş.');
+                return;
+            }
             favoriteIds.forEach(id => {
                 const p = allProducts.find(item => item.id === id);
                 if (p) {
@@ -2331,7 +2348,9 @@
             if (confirm('Sepetinizdeki tüm ürünleri kaldırmak istediğinize emin misiniz?')) {
                 cartItems = [];
                 updateCartUI();
-                if (document.getElementById('checkout-page').classList.contains('active')) renderCheckoutUI();
+                if (document.getElementById('checkout-page').classList.contains('active')) {
+                    renderCheckoutUI();
+                }
             }
         }
 
@@ -2582,7 +2601,7 @@
             if (clearBtn) clearBtn.style.display = 'inline-flex';
             let html = '';
             let subtotal = 0;
-            cartItems.options = cartItems.forEach((item, idx) => {
+            cartItems.forEach((item, idx) => {
                 const itemTotal = item.price * item.qty;
                 subtotal += itemTotal;
                 html += `
